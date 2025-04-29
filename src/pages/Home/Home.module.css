@@ -1,0 +1,113 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.overlay {
+  position: relative;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3); /* Затемнение */
+}
+
+/* Мерцающий заголовок */
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #fff8f1;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  animation: glow 2s infinite alternate;
+}
+
+/* Эффект свечения */
+@keyframes glow {
+  from {
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  }
+  to {
+    text-shadow: 2px 2px 12px rgba(255, 255, 255, 0.9);
+  }
+}
+
+/* Печатающийся подзаголовок */
+.subtitle {
+  font-size: 1.5rem;
+  margin-top: 10px;
+  color: #ffdbcf;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+}
+
+/* Мигающий курсор */
+.cursor {
+  display: inline-block;
+  width: 5px;
+  background-color: white;
+  animation: blink 0.6s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Скрытие курсора */
+.hidden {
+  display: none;
+}
+
+/* Кнопка */
+.orderBtn {
+  position: relative;
+  margin-top: 20px;
+  align-self: center;
+  background: linear-gradient(135deg, #e89e9e, #d17b5f);
+  color: white;
+  padding: 15px 40px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.orderBtn:hover {
+  background: linear-gradient(135deg, #d17b5f, #a55a42);
+  transform: scale(1.05);
+  border: 2px solid rgba(255, 255, 255, 1);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  .orderBtn {
+    font-size: 16px;
+    padding: 12px 30px;
+  }
+}

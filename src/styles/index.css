@@ -1,0 +1,69 @@
+/* 🌟 Корневой контейнер */
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* 🌟 Контентная область */
+.main-content {
+    flex-grow: 1;
+}
+
+/* 🌟 Глобальный flex-контейнер */
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 🌟 Глобальный отступ секций */
+.section {
+    padding: 60px 0;
+}
+
+/* 🌟 Шапка */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--header-bg);
+    padding: 20px 50px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.header nav a {
+    margin-left: 20px;
+    font-size: 18px;
+}
+
+/* 🌟 Подвал */
+.footer {
+    background: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+}
+
+/* 🌟 Адаптивность */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header nav {
+        margin-top: 10px;
+    }
+}

@@ -1,0 +1,58 @@
+/* 🌟 Обнуление стандартных стилей */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 🌟 Глобальные переменные */
+:root {
+    --main-bg-color: #fff8f1;
+    --text-color: #333;
+    --accent-color: #d17b5f;
+    --hover-color: #a55a42;
+    --header-height: 80px;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--main-bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: var(--accent-color);
+    transition: 0.3s;
+}
+
+a:hover {
+    color: var(--hover-color);
+}
+
+/* 🌟 Заголовки */
+h1, h2, h3 {
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+/* 🌟 Кнопки */
+.button {
+    background: var(--accent-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background 0.3s ease;
+}
+
+.button:hover {
+    background: var(--hover-color);
+}

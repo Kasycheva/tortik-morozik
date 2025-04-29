@@ -1,0 +1,202 @@
+/* ОСНОВНОЙ СТИЛЬ НАВИГАЦИИ */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: #fff8f1;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    transition: all 0.3s ease-in-out;
+  }
+  .orderBtn {
+    background-color: #d17b5f;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .orderBtn:hover {
+    background-color: #a55a42;
+  }
+  
+  
+  /* ЛОГОТИП (только текст) */
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #d17b5f;
+  }
+  
+  /* ДЕСКТОПНОЕ МЕНЮ */
+  .desktopMenu ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .desktopMenu ul li {
+    position: relative;
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: fadeIn 0.5s ease forwards;
+  }
+  
+  .desktopMenu ul li:nth-child(1) { animation-delay: 0.1s; }
+  .desktopMenu ul li:nth-child(2) { animation-delay: 0.2s; }
+  .desktopMenu ul li:nth-child(3) { animation-delay: 0.3s; }
+  .desktopMenu ul li:nth-child(4) { animation-delay: 0.4s; }
+  .desktopMenu ul li:nth-child(5) { animation-delay: 0.5s; }
+  
+  .desktopMenu ul li a {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: #d17b5f;
+    transition: 0.3s;
+  }
+  
+  .desktopMenu ul li a:hover {
+    color: #a55a42;
+  }
+  
+  /* БУРГЕР-МЕНЮ */
+  .burger {
+    display: none;
+    cursor: pointer;
+  }
+  
+  .bars span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background: #d17b5f;
+    margin: 5px 0;
+    transition: 0.3s;
+  }
+  
+  /* АНИМАЦИЯ БУРГЕРА */
+  .bars.active span:first-child {
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  .bars.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .bars.active span:last-child {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  
+  /* Мобильное меню */
+  .mobileMenu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 60px 20px;
+    transition: right 0.4s ease-in-out;
+    z-index: 50;
+  }
+  
+  .mobileMenu.open {
+    right: 0;
+  }
+  
+  .mobileMenu ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .mobileMenu ul li {
+    opacity: 0;
+    transform: translateX(20px);
+    animation: slideIn 0.5s ease forwards;
+  }
+  
+  .mobileMenu ul li:nth-child(1) { animation-delay: 0.1s; }
+  .mobileMenu ul li:nth-child(2) { animation-delay: 0.2s; }
+  .mobileMenu ul li:nth-child(3) { animation-delay: 0.3s; }
+  .mobileMenu ul li:nth-child(4) { animation-delay: 0.4s; }
+  .mobileMenu ul li:nth-child(5) { animation-delay: 0.5s; }
+  
+  .mobileMenu ul li a {
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+  }
+  
+  .mobileMenu ul li a:hover {
+    color: #ffdbcf;
+  }
+  
+  /* КНОПКА ЗАКРЫТИЯ */
+  .closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* ЗАТЕМНЕНИЕ ФОНА ПРИ ОТКРЫТИИ БУРГЕРА */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+  }
+  
+  .overlay.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* 🔥 АНИМАЦИИ 🔥 */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+  /* 🔹 ТОЧКИ ПЕРЕЛОМА 🔹 */
+  @media (max-width: 1024px) {
+    /* Прячем десктопное меню */
+    .desktopMenu {
+      display: none;
+    }
+  
+    /* Показываем бургер */
+    .burger {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .logo {
+      font-size: 20px;
+    }
+  }
+  

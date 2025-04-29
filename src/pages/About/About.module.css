@@ -1,0 +1,112 @@
+/* About.module.css */
+
+/* 🔹 Разделитель "Обо мне" */
+.separator {
+    width: 100%;
+    padding: 60px 0;
+    background: #ffe6da;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sectionTitle {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #d17b5f;
+    font-family: "Dancing Script", cursive;
+    position: relative;
+  }
+  
+  .sectionTitle::before,
+  .sectionTitle::after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 2px;
+    background: #d17b5f;
+    top: 50%;
+  }
+  
+  .sectionTitle::before {
+    left: -60px;
+  }
+  
+  .sectionTitle::after {
+    right: -60px;
+}
+
+/* 🔹 Основной блок */
+.about {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: url("../../assets/images/confectioner.jpg") center top/cover no-repeat;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    text-align: center;
+    padding: 50px 50px;
+}
+
+/* 🔹 Контент */
+.content {
+    max-width: 650px;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.6);
+
+    /* Двигаем еще ниже */
+    position: absolute;
+    right: 5%;
+    bottom: 13%; /* Стало ниже */
+}
+
+/* 🔹 Адаптация для мобильных */
+@media (max-width: 768px) {
+    .content {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 2%; /* Еще ниже на мобильных */
+    }
+
+    .about {
+        padding: 30px;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .text {
+        font-size: 1.1rem;
+    }
+
+    .sectionTitle {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about {
+        padding: 20px;
+    }
+
+    .content {
+        max-width: 90%;
+        bottom: 1%; /* Минимально выше границы */
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .text {
+        font-size: 1rem;
+    }
+
+    .sectionTitle {
+        font-size: 2rem;
+    }
+}
