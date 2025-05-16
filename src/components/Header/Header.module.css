@@ -8,30 +8,56 @@
   width: 100%;
   top: 0;
   left: 0;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(6px);
   z-index: 1000;
 }
 
-.logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #d17b5f;
+.logoImage {
+  height: 50px;
+  width: auto;
+  transition: transform 0.4s ease;
+}
+
+.logoImage:hover {
+  transform: rotate(-3deg) scale(1.05);
 }
 
 .nav {
   display: flex;
-  gap: 20px;
+  gap: 25px;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
 }
 
 .link {
   text-decoration: none;
-  color: #333;
+  color: #a55a42;
   font-size: 1rem;
-  transition: 0.3s;
+  font-weight: 500;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background-color: #d17b5f;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .link:hover {
-  color: #a55a42;
+  color: #d17b5f;
 }
 
 .burger {
@@ -40,17 +66,20 @@
   background: none;
   border: none;
   cursor: pointer;
+  color: #a55a42;
 }
 
 @media (max-width: 768px) {
   .nav {
     position: absolute;
-    top: 60px;
-    right: 0;
+    top: 65px;
+    right: 20px;
     background: #fff8f1;
     flex-direction: column;
     padding: 20px;
-    width: 200px;
+    width: 180px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     display: none;
   }
 

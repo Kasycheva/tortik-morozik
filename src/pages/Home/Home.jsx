@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./Home.module.css";
-import cakeVideo from "../../assets/videos/cake-video.mp4";
 
-function Home() {
+function Home({ openOrderForm }) {
   const [subtitle, setSubtitle] = useState("");
   const fullText = "Нежные торты для особых моментов";
   const [index, setIndex] = useState(0);
@@ -11,31 +10,26 @@ function Home() {
   useEffect(() => {
     if (index < fullText.length) {
       const timeout = setTimeout(() => {
-        setSubtitle((prev) => prev + fullText[index]); // Используем prev
+        setSubtitle((prev) => prev + fullText[index]);
         setIndex(index + 1);
       }, 100);
       return () => clearTimeout(timeout);
     } else {
       setTimeout(() => setShowCursor(false), 500);
     }
-  }, [index]); // Убрали `subtitle` из зависимостей
+  }, [index]);
 
   return (
     <div className={styles.hero}>
-      <video autoPlay muted loop className={styles.video}>
-        <source src={cakeVideo} type="video/mp4" />
-        Ваш браузер не поддерживает видео.
-      </video>
-
       <div className={styles.overlay}>
         <h1 className={styles.title}>Сладкие шедевры на заказ</h1>
         <p className={styles.subtitle}>
           {subtitle}
           <span className={`${styles.cursor} ${!showCursor ? styles.hidden : ""}`}>|</span>
         </p>
-        <a href="#order" className={styles.orderBtn}>
+        <button className={styles.orderBtn} onClick={openOrderForm}>
           Заказать
-        </a>
+        </button>
       </div>
     </div>
   );

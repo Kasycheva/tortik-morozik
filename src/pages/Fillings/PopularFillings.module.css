@@ -1,53 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
 .fillings {
   text-align: center;
-  padding: 50px;
+  padding: 50px 20px;
+  background-color: #fff8f8;
 }
 
 .title {
   font-size: 2.5rem;
   color: #333;
-}
-
-.button {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #ff5a7b;
-  color: white;
-  border-radius: 8px;
-  text-decoration: none;
-  margin-bottom: 20px;
-  cursor: pointer;
+  margin-bottom: 30px;
+  font-weight: 600;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  justify-content: center;
+  gap: 40px;
+  margin-bottom: 30px;
 }
 
-.card {
-  background: white;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.image {
-  width: 100%;
-  border-radius: 10px;
-}
-
-/* Мобильная версия */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .grid {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: 1fr;
   }
+}
+
+/* Карточка */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.03);
+}
+
+.fillingTitle {
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+  color: #222;
+  font-weight: 600;
+  text-align: center;
+}
+
+.description {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.ingredients {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+  border-top: 1px solid #eee;
+  padding-top: 12px;
+}
+
+.ingredients strong {
+  font-weight: 600;
+  color: #222;
+}
+
+.button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #ff5a7b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #e34767;
 }

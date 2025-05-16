@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
+import { useState, useEffect } from "react";
+import { HashRouter as Router, Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
+import TopBar from "./components/TopBar/TopBar";
 import Home from "./pages/Home/Home";
 import OrderForm from "./components/OrderForm/OrderForm";
 import About from "./pages/About/About";
@@ -11,9 +12,22 @@ import AllFillings from "./pages/Fillings/AllFillings";
 import Footer from "./components/Footer/Footer";
 
 function MainPage({ openOrderForm }) {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const target = document.querySelector(location.hash);
+      if (target) {
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: "smooth" });
+        }, 200); 
+      }
+    }
+  }, [location]);
+
   return (
     <>
-      <section id="home"><Home /></section>
+      <section id="home"><Home openOrderForm={openOrderForm} /></section>
       <section id="about"><About /></section>
       <section id="catalog"><Catalog /></section>
       <section id="category"><Category /></section>
@@ -24,9 +38,17 @@ function MainPage({ openOrderForm }) {
 }
 
 function AllFillingsPage() {
+  const navigate = useNavigate();
+
+  const handleBackClick = () => {
+    navigate("/#fillings");
+  };
+
   return (
     <section>
-      <Link to="/" className="back-button">← Назад к популярным начинкам</Link>
+      <button className="back-button" onClick={handleBackClick}>
+        ← Назад к популярным начинкам
+      </button>
       <AllFillings />
     </section>
   );
@@ -37,19 +59,33 @@ function App() {
 
   return (
     <Router>
-      <Navbar openOrderForm={() => setIsOrderFormOpen(true)} />
+      <ScrollToTop />
+      <TopBar openOrderForm={() => setIsOrderFormOpen(true)} />
 
       <main>
         <Routes>
-          {/* Главная со всеми секциями */}
-          <Route path="/" element={<MainPage openOrderForm={() => setIsOrderFormOpen(true)} />} />
-
-          {/* Все начинки */}
+          <Route
+            path="/"
+            element={<MainPage openOrderForm={() => setIsOrderFormOpen(true)} />}
+          />
           <Route path="/fillings/all" element={<AllFillingsPage />} />
-
-          {/* Страница с заказом */}
-          <Route path="/order" element={<OrderForm isOpen={isOrderFormOpen} closeForm={() => setIsOrderFormOpen(false)} />} />
+          <Route
+            path="/order"
+            element={
+              <OrderForm
+                isOpen={isOrderFormOpen}
+                closeForm={() => setIsOrderFormOpen(false)}
+              />
+            }
+          />
         </Routes>
+
+        {isOrderFormOpen && (
+          <OrderForm
+            isOpen={isOrderFormOpen}
+            closeForm={() => setIsOrderFormOpen(false)}
+          />
+        )}
       </main>
     </Router>
   );
